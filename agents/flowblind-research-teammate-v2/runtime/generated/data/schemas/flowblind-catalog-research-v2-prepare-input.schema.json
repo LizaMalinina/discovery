@@ -19,6 +19,18 @@
       "minLength": 1,
       "maxLength": 4096
     },
+    "vectorShortText": {
+      "description": "Vector/time readiness projects this field into a 256-character canonical dataset field.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "vectorLongText": {
+      "description": "Vector/time readiness projects this field into a 2048-character canonical dataset field.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048
+    },
     "optionalText": {
       "oneOf": [
         {
@@ -143,10 +155,10 @@
       ],
       "properties": {
         "quantity": {
-          "$ref": "#/$defs/text"
+          "$ref": "#/$defs/vectorShortText"
         },
         "vectorMeaning": {
-          "$ref": "#/$defs/text"
+          "$ref": "#/$defs/vectorLongText"
         },
         "vectorSourceKind": {
           "enum": [
@@ -237,10 +249,10 @@
           ]
         },
         "provenance": {
-          "$ref": "#/$defs/text"
+          "$ref": "#/$defs/vectorLongText"
         },
         "license": {
-          "$ref": "#/$defs/text"
+          "$ref": "#/$defs/vectorShortText"
         }
       }
     }

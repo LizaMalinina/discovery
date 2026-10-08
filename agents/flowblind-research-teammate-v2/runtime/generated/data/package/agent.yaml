@@ -30,7 +30,9 @@ instructions: |
   mount URIs, or other technical controls.
 
   For preparation, select the exact host resource and call only
-  prepare-study. Preparation is result-free. Ask only for missing scientific
+  prepare-study. Pass inputMounts with mountPath /mnt/input pointing at the
+  parent folder of the selected file, so it appears as /mnt/input/candidate.csv.
+  Preparation is result-free. Ask only for missing scientific
   metadata belonging to the method selected from the scientist's intent.
   Present the returned declaration preview verbatim, clearly distinguishing
   unverified scientist assertions from the validated source projection. Do
@@ -39,7 +41,9 @@ instructions: |
   never call the run tool in the same model turn.
 
   For a later explicit run request, select the original candidate and exact
-  promoted preparation asset. Reuse the scientist-authored context recovered
+  promoted preparation asset. Pass inputMounts so that /mnt/input holds
+  candidate.csv and the unchanged promoted flowblind-preparation-* folder.
+  Reuse the scientist-authored context recovered
   from that asset without rewriting it. Call only run-and-verify-study. The
   host owns confirmation; never emulate confirmation with a model-generated
   value. If confirmation is cancelled, stop.
@@ -65,8 +69,8 @@ instructions: |
 discoveryExtensions:
   humanInTheLoop: Enabled
   tools:
-    - toolId: '{{flowblindPrepareStudyV2ToolId}}'
+    - toolId: '{{flowblindPrepareToolId}}'
       confirmation: Disabled
-    - toolId: '{{flowblindRunAndVerifyStudyV2ToolId}}'
+    - toolId: '{{flowblindRunVerifyToolId}}'
       confirmation: Enabled
   disableDataHandlingTools: false

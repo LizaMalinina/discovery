@@ -141,7 +141,7 @@ test('V2-LIVE-001..004 remain manual-only and V2-OPS-006..008 remain contract-on
   }
 })
 
-test('V2-HID-007/008/009/014 export an honest deterministic external driver', async () => {
+test('V2-HID-007/008/009/014 export an honest deterministic external driver', async (t) => {
   const harnessCoverage =
     await loadScenarioCoverage()
   assert.deepEqual(
@@ -229,7 +229,7 @@ test('V2-HID-007/008/009/014 export an honest deterministic external driver', as
     velocityRms: null,
   })
 
-  test('V2-HID-005 retained exact-null and tolerance-speed bytes prepare without rewriting', async () => {
+  await t.test('V2-HID-005 retained exact-null and tolerance-speed bytes prepare without rewriting', async () => {
     const retainedRoot = resolve(
       packageRoot,
       'runtime',
@@ -291,7 +291,7 @@ test('V2-HID-007/008/009/014 export an honest deterministic external driver', as
     }
   })
 
-  test('V2-HID-005/007/008/009/014 attest the exact-byte bridge extension', async () => {
+  await t.test('V2-HID-005/007/008/009/014 attest the exact-byte bridge extension', async () => {
     assert.equal(
       scenarios.get('V2-HID-005').coverageStatus,
       'package-local-executable',
@@ -400,10 +400,10 @@ test('V2-PKG-001 uses the authoritative canonical package file names and retaine
     'agent.yaml',
     'metadata.yaml',
     'flowblind-catalog-research-contract-v2.md',
-    'tools/flowblind-prepare-study-v2/Dockerfile',
-    'tools/flowblind-prepare-study-v2/tool.yaml',
-    'tools/flowblind-run-and-verify-study-v2/Dockerfile',
-    'tools/flowblind-run-and-verify-study-v2/tool.yaml',
+    'tools/flowblind-prepare/Dockerfile',
+    'tools/flowblind-prepare/tool.yaml',
+    'tools/flowblind-run-verify/Dockerfile',
+    'tools/flowblind-run-verify/tool.yaml',
     'runtime/flowblind-prepare-study-v2.mjs',
     'runtime/flowblind-run-and-verify-study-v2.mjs',
     'runtime/flowblind-report-resource-v2.mjs',
@@ -519,7 +519,7 @@ test('V2-PKG-003 V2-PKG-004 bind every retained byte and tree hash', async () =>
       {
         count: 27,
         tree:
-          '7ba8a72539e9af2d461e941ffdbac3dd3e8a212c702dbe06b4c9b6fa0c34d802',
+          'b7d84889d939857a6f44c443ea6bc49602cff732fdae735fcc08b9dedf2e8b61',
       },
     ],
     [
@@ -527,7 +527,7 @@ test('V2-PKG-003 V2-PKG-004 bind every retained byte and tree hash', async () =>
       {
         count: 54,
         tree:
-          '718bf2b8e7f3abe6d4d6338ad4141e5a28ff28432f2847ff610fc5f7809d204c',
+          'e565c7004bc9f81fdfde11da9023481fa4e51f0e288c58b2450d56d17d8d73e3',
       },
     ],
   ])

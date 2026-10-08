@@ -366,11 +366,11 @@ test('V2-HID-001 V2-PKG-001 V2-PKG-003 V2-PKG-004 attest the exact surface and r
     ),
     [
       [
-        'flowblind-prepare-study-v2',
+        'flowblind-prepare',
         'Disabled',
       ],
       [
-        'flowblind-run-and-verify-study-v2',
+        'flowblind-run-verify',
         'Enabled',
       ],
     ],
@@ -1363,7 +1363,7 @@ test('Hidden prepare enforces the problem snapshot byte ceiling', async () => {
   }
 })
 
-test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and confinement metadata', async () => {
+test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package mirrors and confinement metadata', async () => {
   assert.deepEqual(
     (
       await readdir(
@@ -1375,8 +1375,8 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
       .map((entry) => entry.name)
       .sort(),
     [
-      'flowblind-prepare-study-v2',
-      'flowblind-run-and-verify-study-v2',
+      'flowblind-prepare',
+      'flowblind-run-verify',
     ],
   )
   const agent = await readFile(
@@ -1396,7 +1396,7 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
     resolve(
       packageRoot,
       'tools',
-      'flowblind-prepare-study-v2',
+      'flowblind-prepare',
       'tool.yaml',
     ),
     'utf8',
@@ -1405,7 +1405,7 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
     resolve(
       packageRoot,
       'tools',
-      'flowblind-run-and-verify-study-v2',
+      'flowblind-run-verify',
       'tool.yaml',
     ),
     'utf8',
@@ -1506,8 +1506,8 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
     /"(?:action|approval|approved|attachmentPath|authority|byteLength|confirmation|hash|manifest|methodId|mountUri|packageId|path|receipt|runId|sha256|toolName)"/u,
   )
   for (const folder of [
-    'flowblind-prepare-study-v2',
-    'flowblind-run-and-verify-study-v2',
+    'flowblind-prepare',
+    'flowblind-run-verify',
   ]) {
     const dockerfile = await readFile(
       resolve(
@@ -1552,6 +1552,10 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
       'runtime/generated/data/package/metadata.yaml',
     ],
     [
+      'README.md',
+      'runtime/generated/data/package/README.md',
+    ],
+    [
       'package.json',
       'runtime/generated/data/package/package.json',
     ],
@@ -1565,21 +1569,8 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
       await readFile(resolve(packageRoot, attested)),
     )
   }
-  // The public catalog README adds contribution guidance while the attested
-  // runtime copy remains byte-locked as integrated package evidence.
   const catalogReadme = await readFile(
     resolve(packageRoot, 'README.md'),
-    'utf8',
-  )
-  const attestedReadme = await readFile(
-    resolve(
-      packageRoot,
-      'runtime',
-      'generated',
-      'data',
-      'package',
-      'README.md',
-    ),
     'utf8',
   )
   for (const heading of [
@@ -1597,23 +1588,19 @@ test('V2-PKG-001 V2-PKG-005 V2-PKG-006 V2-PKG-007 validate package surfaces and 
       new RegExp(`^## ${heading}`, 'mu'),
     )
   }
-  assert.match(
-    catalogReadme,
-    /routing and access boundary, not secrecy/iu,
-  )
-  assert.match(
-    catalogReadme,
-    /separately approved and allowlisted private overlay/iu,
-  )
-  assert.match(catalogReadme, /V2-LIVE-004/u)
-  assert.match(
-    catalogReadme,
-    /Public demonstrations keep this route disabled/iu,
-  )
-  assert.match(
-    attestedReadme,
+  for (const required of [
     /portable catalog-native/u,
-  )
+    /routing and access boundary, not secrecy/iu,
+    /separately approved and allowlisted private overlay/iu,
+    /V2-LIVE-004/u,
+    /Public demonstrations keep this route disabled/iu,
+    /mountPath: \/mnt\/input/u,
+    /agent-level approval/iu,
+    /--platform linux\/amd64/u,
+    /hard links are not required/iu,
+  ]) {
+    assert.match(catalogReadme, required)
+  }
   const runtimeText = await readFile(
     resolve(
       packageRoot,

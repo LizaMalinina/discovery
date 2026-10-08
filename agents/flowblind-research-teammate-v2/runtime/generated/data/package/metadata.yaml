@@ -2,8 +2,8 @@ name: flowblind-research-teammate-v2
 type: agent
 version: 2.0.0
 associated_tools:
-  - agents/flowblind-research-teammate-v2/tools/flowblind-prepare-study-v2
-  - agents/flowblind-research-teammate-v2/tools/flowblind-run-and-verify-study-v2
+  - agents/flowblind-research-teammate-v2/tools/flowblind-prepare
+  - agents/flowblind-research-teammate-v2/tools/flowblind-run-verify
 publisher:
   name: Microsoft
   contact: discovery-catalog@microsoft.com
@@ -14,8 +14,8 @@ description: >-
   regional-agreement and vector/time-readiness methods and preserves
   restart-reconcilable content-addressed publication artifacts.
 tags:
-  - scientific-validation
-  - reproducibility
-  - regional-agreement
-  - vector-time-readiness
-  - deterministic-reporting
+  - computational-fluid-dynamics
+  - cfd
+  - data-analysis
+  - statistics
+  - research
