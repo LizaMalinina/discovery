@@ -163,16 +163,16 @@
       "sha256": "be8edcd6c36df8dee5cb702c5a4afd55e5de39b99df7d398baec6f3adeb5b018"
     },
     {
-      "byteLength": 11202,
+      "byteLength": 12029,
       "reference": "generated/data/package/README.md",
       "role": "package-readme",
-      "sha256": "09c16ca079a211907e0e1931863a5ebcc895764535fddf9075dd3c7148035dfa"
+      "sha256": "85da1c63d136b468ee9cc80851a1b1abd16b858301d932ac79e17b0b248a0e63"
     },
     {
-      "byteLength": 3731,
+      "byteLength": 3964,
       "reference": "generated/data/package/agent.yaml",
       "role": "catalog-agent-definition",
-      "sha256": "3da988214c245f1064ecf4ce86a1323ba987aadb769d1e1746c4ff5993716c9d"
+      "sha256": "dcb6274c53fadc61061e201a8cc073f152e2fe3cc4795bcd1058f142966b92f7"
     },
     {
       "byteLength": 5982,
@@ -199,10 +199,10 @@
       "sha256": "18313a79cc7778bd45913bab168e0ccb32c4e143e3954a996f810c17300692cb"
     },
     {
-      "byteLength": 2431,
+      "byteLength": 2629,
       "reference": "generated/data/package/flowblind-run-verify.tool.yaml",
       "role": "run-tool-definition",
-      "sha256": "428d4146081368b6ce78ee70fb3cfbcf57a38bd7de38a2c1fb45cb8b885b1560"
+      "sha256": "12298bef877ebcdfd78c29a77f48cf326022e1fecb854e6d825c34aa6e211bd9"
     },
     {
       "byteLength": 681,

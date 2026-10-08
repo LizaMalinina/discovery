@@ -61,7 +61,7 @@ export const expectedLockIdentity = Object.freeze({
   byteLength: Number(
     '16667',
   ),
-  sha256: '976ec3675d89bc440a5b83d4507f1c1e8bcc2a4ad628fa6cb002f3293250300d',
+  sha256: 'a2c9b38791028e30c4f12e55b34416a0c03c9d2d5ee611a74f83523c50662c19',
 })
 
 function throwIfAborted(signal) {

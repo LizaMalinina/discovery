@@ -31,11 +31,13 @@ actions:
   - name: run-and-verify-study
     description: >-
       Run the exact prepared study after the catalog-owned confirmation
-      callback. Pass inputMounts with mountPath /mnt/input so that
-      /mnt/input/candidate.csv is the original file and
-      /mnt/input/flowblind-preparation-<sha256>/ is the unchanged promoted
-      preparation folder. Scientist input contains no technical controls or
-      approvals.
+      callback. /mnt/input must contain exactly candidate.csv and the
+      unchanged flowblind-preparation-<sha256>/ folder. Pass inputMounts with
+      mountPath /mnt/input for the folder that holds the selected file, and
+      again with mountPath /mnt/input for the promoted preparation output,
+      which already contains the flowblind-preparation-<sha256>/ folder. Never
+      append that folder name to mountPath. Scientist input contains no
+      technical controls or approvals.
     infra_node: worker
     input_schema:
       type: object

@@ -34,10 +34,14 @@ catalog review before merge.
    content-addressed preparation folder to `/output`.
 4. Review the declaration preview. Preparation must stop without running the
    study in the same model turn.
-5. In a later explicit request, mount the original `candidate.csv` and the
-   unchanged promoted `flowblind-preparation-<sha256>` folder so that both
-   appear under `/mnt/input`. The agent calls `run-and-verify-study`, for
-   which confirmation is enabled.
+5. In a later explicit request, make `/mnt/input` hold exactly the original
+   `candidate.csv` and the unchanged promoted
+   `flowblind-preparation-<sha256>` folder: pass `inputMounts` with
+   `mountPath: /mnt/input` for both the parent folder of the file and the
+   promoted preparation output. That output already contains the
+   `flowblind-preparation-<sha256>` folder, so don't append its name to
+   `mountPath`. The agent calls `run-and-verify-study`, for which
+   confirmation is enabled.
 6. If the confirmation is approved, the tool revalidates the exact bindings,
    runs only the prepared method, verifies deterministic replay, and publishes
    marker-last JSON, Markdown, HTML, and receipt evidence. If confirmation is
@@ -167,6 +171,17 @@ Keep the schema-standard image tags in the tool definitions:
 
 - `{name}.azurecr.io/flowblind-prepare:2.0.0`
 - `{name}.azurecr.io/flowblind-run-verify:2.0.0`
+
+### Chat model
+
+Pin a capable reasoning model rather than relying on automatic model
+selection. In local Discovery app tests, GPT-5.6 Sol with medium reasoning
+followed the agent contract: it routed the request, mounted the input at
+`/mnt/input`, stopped after preparation, and reported that no result was
+possible while the tools were not running. With automatic selection on a
+Copilot Free account, the app chose MAI-Code-1.1-Flash, which wrote an
+unsupported regional conclusion instead of reporting that the tools were
+unavailable. Other models have not been tested with this package.
 
 ### Scientific parameters
 
