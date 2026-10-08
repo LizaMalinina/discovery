@@ -13,7 +13,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-REG-002/V2-REG-003/V2-REG-006"
+        "portable-runtime.node-test.js: V2-REG-002/V2-REG-003/V2-REG-006"
       ],
       "gaps": [],
       "id": "V2-REG-002"
@@ -21,7 +21,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-REG-002/V2-REG-003/V2-REG-006"
+        "portable-runtime.node-test.js: V2-REG-002/V2-REG-003/V2-REG-006"
       ],
       "gaps": [],
       "id": "V2-REG-003"
@@ -29,7 +29,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-REG-002/V2-REG-003/V2-REG-006"
+        "portable-runtime.node-test.js: V2-REG-002/V2-REG-003/V2-REG-006"
       ],
       "gaps": [],
       "id": "V2-REG-006"
@@ -37,7 +37,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-VEC-002/V2-VEC-003/V2-VEC-008"
+        "portable-runtime.node-test.js: V2-VEC-002/V2-VEC-003/V2-VEC-008"
       ],
       "gaps": [],
       "id": "V2-VEC-002"
@@ -45,7 +45,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-VEC-002/V2-VEC-003/V2-VEC-008"
+        "portable-runtime.node-test.js: V2-VEC-002/V2-VEC-003/V2-VEC-008"
       ],
       "gaps": [],
       "id": "V2-VEC-003"
@@ -53,7 +53,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "scenario-coverage.node-test.mjs: V2-VEC-005"
+        "scenario-coverage.node-test.js: V2-VEC-005"
       ],
       "gaps": [],
       "id": "V2-VEC-005"
@@ -61,7 +61,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "scenario-coverage.node-test.mjs: V2-VEC-006"
+        "scenario-coverage.node-test.js: V2-VEC-006"
       ],
       "gaps": [],
       "id": "V2-VEC-006"
@@ -69,7 +69,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-VEC-002/V2-VEC-003/V2-VEC-008"
+        "portable-runtime.node-test.js: V2-VEC-002/V2-VEC-003/V2-VEC-008"
       ],
       "gaps": [],
       "id": "V2-VEC-008"
@@ -77,8 +77,8 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-HID-001",
-        "portable-runtime.node-test.mjs: retained verification remains lazy until exact activation"
+        "portable-runtime.node-test.js: V2-HID-001",
+        "portable-runtime.node-test.js: retained verification remains lazy until exact activation"
       ],
       "gaps": [],
       "id": "V2-HID-001"
@@ -86,7 +86,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-HID-004/V2-HID-005"
+        "portable-runtime.node-test.js: V2-HID-004/V2-HID-005"
       ],
       "gaps": [],
       "id": "V2-HID-004"
@@ -94,8 +94,8 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-HID-004/V2-HID-005",
-        "scenario-coverage.node-test.mjs: retained exact-null and tolerance-speed direct preparation"
+        "portable-runtime.node-test.js: V2-HID-004/V2-HID-005",
+        "scenario-coverage.node-test.js: retained exact-null and tolerance-speed direct preparation"
       ],
       "gaps": [],
       "id": "V2-HID-005"
@@ -103,7 +103,7 @@
     {
       "coverageStatus": "external-driver-required",
       "evidence": [
-        "flowblind-scenario-harness-v2.mjs run-hidden"
+        "flowblind-scenario-harness-v2.js run-hidden"
       ],
       "gaps": [
         "Package-local node tests do not provide a pinned Clarabel Python environment.",
@@ -115,7 +115,7 @@
     {
       "coverageStatus": "external-driver-required",
       "evidence": [
-        "flowblind-scenario-harness-v2.mjs run-hidden"
+        "flowblind-scenario-harness-v2.js run-hidden"
       ],
       "gaps": [
         "The contradictory observation variant is generated only in the driver workspace from an exact point-component base problem.",
@@ -127,7 +127,7 @@
     {
       "coverageStatus": "external-driver-required",
       "evidence": [
-        "flowblind-scenario-harness-v2.mjs run-hidden"
+        "flowblind-scenario-harness-v2.js run-hidden"
       ],
       "gaps": [
         "The null-budget variant is generated only in the driver workspace from an exact base problem.",
@@ -139,7 +139,7 @@
     {
       "coverageStatus": "external-driver-required",
       "evidence": [
-        "flowblind-scenario-harness-v2.mjs run-hidden"
+        "flowblind-scenario-harness-v2.js run-hidden"
       ],
       "gaps": [
         "Cold receipt-bound reads require a completed pinned-runtime hidden-flow run; the node-only suite validates the harness and URI contract but does not install scientific Python dependencies.",
@@ -150,7 +150,7 @@
     {
       "coverageStatus": "contract-only",
       "evidence": [
-        "scenario-coverage.node-test.mjs: V2-OPS-006"
+        "scenario-coverage.node-test.js: V2-OPS-006"
       ],
       "gaps": [
         "The package does not claim a deployment kill-switch or rollback controller.",
@@ -161,7 +161,7 @@
     {
       "coverageStatus": "contract-only",
       "evidence": [
-        "scenario-coverage.node-test.mjs: V2-OPS-007"
+        "scenario-coverage.node-test.js: V2-OPS-007"
       ],
       "gaps": [
         "Retained version identities are exposed, but durable restart reconciliation requires a host journal and cannot be inferred from process-local state."
@@ -171,7 +171,7 @@
     {
       "coverageStatus": "contract-only",
       "evidence": [
-        "scenario-coverage.node-test.mjs: V2-OPS-008"
+        "scenario-coverage.node-test.js: V2-OPS-008"
       ],
       "gaps": [
         "Deployment journals, fencing, and bounded retry orchestration are host responsibilities and are not implemented by this package."
@@ -181,7 +181,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-PKG-001"
+        "portable-runtime.node-test.js: V2-PKG-001"
       ],
       "gaps": [],
       "id": "V2-PKG-001"
@@ -189,7 +189,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "scenario-coverage.node-test.mjs: V2-PKG-002"
+        "scenario-coverage.node-test.js: V2-PKG-002"
       ],
       "gaps": [],
       "id": "V2-PKG-002"
@@ -197,7 +197,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-PKG-003"
+        "portable-runtime.node-test.js: V2-PKG-003"
       ],
       "gaps": [],
       "id": "V2-PKG-003"
@@ -205,7 +205,7 @@
     {
       "coverageStatus": "package-local-executable",
       "evidence": [
-        "portable-runtime.node-test.mjs: V2-PKG-004"
+        "portable-runtime.node-test.js: V2-PKG-004"
       ],
       "gaps": [],
       "id": "V2-PKG-004"
@@ -213,8 +213,8 @@
     {
       "coverageStatus": "partial",
       "evidence": [
-        "portable-runtime.node-test.mjs: extra-file and hardlink rejection",
-        "scenario-coverage.node-test.mjs: manifest and mirror checks"
+        "portable-runtime.node-test.js: extra-file and hardlink rejection",
+        "scenario-coverage.node-test.js: manifest and mirror checks"
       ],
       "gaps": [
         "Case-alias creation is not portable on case-insensitive Windows filesystems.",
@@ -225,7 +225,7 @@
     {
       "coverageStatus": "partial",
       "evidence": [
-        "portable-runtime.node-test.mjs: static Docker confinement",
+        "portable-runtime.node-test.js: static Docker confinement",
         "parent-driver: docker build and --network none --read-only execution"
       ],
       "gaps": [
@@ -237,7 +237,7 @@
     {
       "coverageStatus": "partial",
       "evidence": [
-        "scenario-coverage.node-test.mjs: LF, unsafe path, secret-pattern, and retained-byte scans",
+        "scenario-coverage.node-test.js: LF, unsafe path, secret-pattern, and retained-byte scans",
         "parent-driver: core.autocrlf=true exported-subtree test"
       ],
       "gaps": [
@@ -248,8 +248,8 @@
     {
       "coverageStatus": "partial",
       "evidence": [
-        "portable-runtime.node-test.mjs: tamper and schema-envelope checks",
-        "portable-runtime.node-test.mjs: retained HTML viewport, print, and main-landmark assertions",
+        "portable-runtime.node-test.js: tamper and schema-envelope checks",
+        "portable-runtime.node-test.js: retained HTML viewport, print, and main-landmark assertions",
         "parent-driver: v2 browser accessibility, mobile, print, overflow, and external-load validation"
       ],
       "gaps": [

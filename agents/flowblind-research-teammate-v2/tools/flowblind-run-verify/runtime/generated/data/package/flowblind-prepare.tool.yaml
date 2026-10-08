@@ -139,7 +139,7 @@ actions:
           description: Required licence or permission governing the selected data.
       required:
         - researchGoal
-    command: node /app/runtime/flowblind-prepare-study-v2.mjs
+    command: node /app/runtime/flowblind-prepare-study-v2.js
     environment_variables:
       - { name: FLOWBLIND_RESEARCH_GOAL, value: "{{researchGoal}}" }
       - { name: FLOWBLIND_DECISION_QUESTION, value: "{{decisionQuestion}}" }

@@ -240,22 +240,22 @@ const launchers = [
   sourceArtifact(
     'prepare-study-facade',
     'public-executable-facade',
-    'tools/catalogCapabilities/hiddenFlow/launchers/flowblind-hidden-flow-prepare.mjs',
-    'flowblind-hidden-flow-prepare.mjs',
+    'tools/catalogCapabilities/hiddenFlow/launchers/flowblind-hidden-flow-prepare.js',
+    'flowblind-hidden-flow-prepare.js',
     'text/javascript',
   ),
   sourceArtifact(
     'run-and-verify-study-facade',
     'public-executable-facade',
-    'tools/catalogCapabilities/hiddenFlow/launchers/flowblind-hidden-flow-run.mjs',
-    'flowblind-hidden-flow-run.mjs',
+    'tools/catalogCapabilities/hiddenFlow/launchers/flowblind-hidden-flow-run.js',
+    'flowblind-hidden-flow-run.js',
     'text/javascript',
   ),
   sourceArtifact(
     'declaration-preview-facade',
     'declaration-preview-facade',
-    'tools/catalogCapabilities/hiddenFlow/launchers/flowblind-hidden-flow-declaration-preview.mjs',
-    'flowblind-hidden-flow-declaration-preview.mjs',
+    'tools/catalogCapabilities/hiddenFlow/launchers/flowblind-hidden-flow-declaration-preview.js',
+    'flowblind-hidden-flow-declaration-preview.js',
     'text/javascript',
   ),
 ] as const
@@ -396,7 +396,7 @@ const sourceArtifacts: readonly SourceArtifact[] = [
     'python-requirements-lock',
     'hash-pinned-python-requirements',
     'docker/hidden-flow-solver-requirements.txt',
-    'data/python/requirements.lock',
+    'data/python/requirements.lock.txt',
     'text/plain',
   ),
   sourceArtifact(
@@ -458,8 +458,8 @@ const sourceArtifacts: readonly SourceArtifact[] = [
   sourceArtifact(
     'package-verifier-template',
     'package-verifier-source-template',
-    'tools/catalogCapabilities/hiddenFlow/package-verifier-template.mjs',
-    'data/reviewed-source/tools/catalogCapabilities/hiddenFlow/package-verifier-template.mjs',
+    'tools/catalogCapabilities/hiddenFlow/package-verifier-template.js',
+    'data/reviewed-source/tools/catalogCapabilities/hiddenFlow/package-verifier-template.js',
     'text/javascript',
   ),
 ]
@@ -585,7 +585,7 @@ function verifierSource(lockIdentity: {
   const template = normalizedSource(
     resolve(
       capabilityRoot,
-      'package-verifier-template.mjs',
+      'package-verifier-template.js',
     ),
   ).toString('utf8')
   return template
@@ -604,7 +604,7 @@ export default defineConfig({
       generateBundle(_options, bundle) {
         const runtime =
           bundle[
-            'generated/flowblind-catalog-hidden-flow-runtime-v1.mjs'
+            'generated/flowblind-catalog-hidden-flow-runtime-v1.js'
           ]
         if (
           runtime === undefined ||
@@ -654,7 +654,7 @@ export default defineConfig({
           runtimeNetworkRequired: false,
           publicRuntime: {
             bundledPath:
-              'generated/flowblind-catalog-hidden-flow-runtime-v1.mjs',
+              'generated/flowblind-catalog-hidden-flow-runtime-v1.js',
             byteLength: runtimeBytes.byteLength,
             sha256: sha256(runtimeBytes),
           },
@@ -689,7 +689,7 @@ export default defineConfig({
         this.emitFile({
           type: 'asset',
           fileName:
-            'flowblind-hidden-flow-capability-verification-v1.mjs',
+            'flowblind-hidden-flow-capability-verification-v1.js',
           source: verifierSource({
             byteLength: lockBytes.byteLength,
             sha256: sha256(lockBytes),
@@ -707,7 +707,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         entryFileNames:
-          'generated/flowblind-catalog-hidden-flow-runtime-v1.mjs',
+          'generated/flowblind-catalog-hidden-flow-runtime-v1.js',
         codeSplitting: false,
       },
     },

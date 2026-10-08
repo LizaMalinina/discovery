@@ -53,7 +53,7 @@
       "required": ["bundledPath", "byteLength", "sha256"],
       "properties": {
         "bundledPath": {
-          "const": "generated/flowblind-catalog-hidden-flow-runtime-v1.mjs"
+          "const": "generated/flowblind-catalog-hidden-flow-runtime-v1.js"
         },
         "byteLength": {
           "type": "integer",

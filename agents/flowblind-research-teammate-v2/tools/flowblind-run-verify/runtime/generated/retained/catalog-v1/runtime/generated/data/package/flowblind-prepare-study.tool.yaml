@@ -156,7 +156,7 @@ actions:
         - valueUnit
         - provenance
         - license
-    command: node /app/runtime/flowblind-prepare-study.mjs
+    command: node /app/runtime/flowblind-prepare-study.js
     environment_variables:
       - name: FLOWBLIND_RESEARCH_GOAL
         value: "{{researchGoal}}"

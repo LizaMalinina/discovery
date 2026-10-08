@@ -30,8 +30,8 @@
       "run": "REQUIRED_BEFORE_LIVE_ACTIVATION"
     },
     "method": "finite-basis-hidden-flow-v1@1.1.0",
-    "requiredActivationManifestDigest": "sha256:fa23d71c56af4f9d26b53161ae427bed45ab794cb0551f1a73eef35a9f02f6c4",
-    "retainedTreeSha256": "e565c7004bc9f81fdfde11da9023481fa4e51f0e288c58b2450d56d17d8d73e3"
+    "requiredActivationManifestDigest": "sha256:da68fb63eb7b0bf0d68be6fdeb487a8a1b5b017934e6932cd5d439f40064a8d6",
+    "retainedTreeSha256": "556d8d4d1c3be175258b91045ca7bd9c75ca836bd17a82ad21f2eb9769c4ebf6"
   },
   "promptAgent": {
     "allowMultipleToolCalls": false,

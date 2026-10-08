@@ -77,13 +77,13 @@
       ],
       "properties": {
         "lockSha256": {
-          "const": "07cfa7f06e01cd2274dc10c6798795d47dd37ac3741bef070368eb7bf003833c"
+          "const": "5adde457ed53ece29eec6bfffedfc835807ac16f276a786bd5dc19c71290c0c4"
         },
         "runtimeSha256": {
-          "const": "6374a888453483304e9d991c5e7b6beb591aa9c64d101b79cf5b97b176db5cbe"
+          "const": "162d466c18735d9c362396eb21770094a66fa5bd2682b833b5dd68fbf2774840"
         },
         "verifierSha256": {
-          "const": "fa8870b2bea94dcadfc4233202128f3d3b8535e46c133c52c7f3b7ab393fe816"
+          "const": "1e0a3b59d10d65140958ee91cd1e911c4a68750e3f4b0cd4dded5ee4c666c44f"
         }
       }
     },

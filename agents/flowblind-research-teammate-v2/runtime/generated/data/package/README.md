@@ -124,7 +124,7 @@ shows that the reviewed facade was selected; it is not evidence of the human
 confirmation decision. Direct container or command-line invocation is a
 conformance interface, not a supported live authorization path. Report
 resources are read through the internal
-`runtime/flowblind-report-resource-v2.mjs` facade, which is not a public tool.
+`runtime/flowblind-report-resource-v2.js` facade, which is not a public tool.
 
 ### Private hidden-flow boundary
 

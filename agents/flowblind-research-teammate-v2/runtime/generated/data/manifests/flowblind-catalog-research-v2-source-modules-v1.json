@@ -30,7 +30,7 @@
     {
       "byteLength": 25179,
       "reference": "tools/catalogResearchV2/descriptors.ts",
-      "sha256": "4464febee34997169a1723db14f9ff4f7d569a23b288765c80f51206b1ee8b8b"
+      "sha256": "9cae9e00d51d06e08c9a09c439937cc52061b7def97febdc903562a045f0da44"
     },
     {
       "byteLength": 5507,
@@ -40,7 +40,7 @@
     {
       "byteLength": 23851,
       "reference": "tools/catalogResearchV2/hiddenFlowV1Contract.ts",
-      "sha256": "70cf6f9b4fa833dc63179ba5f826cd5e8579b26ecd48544e8c5cc381fd9c4464"
+      "sha256": "73159e00a9fe9eabafcc556e95f95bd48d148fc31997dc14e73ff301a72080f6"
     },
     {
       "byteLength": 599,
@@ -63,19 +63,19 @@
       "sha256": "4d5dfb92c89211f0c535e94ed9d09eef7affd47b1bd780f423c62a117a859352"
     },
     {
-      "byteLength": 48397,
+      "byteLength": 48396,
       "reference": "tools/catalogResearchV2/package/retainedCatalogV1.ts",
-      "sha256": "36c95055d1e1b99dc2c007a3be3f1e9e5f78e581221c546b2fb48697ae8cc36c"
+      "sha256": "aa9461659ee0148d321710276c51dcff2c691b71d5bacb69e58ccc502abc4caf"
     },
     {
-      "byteLength": 63277,
+      "byteLength": 63276,
       "reference": "tools/catalogResearchV2/package/retainedHiddenV1.ts",
-      "sha256": "a9ea0a12b1218d4449ae9c7c642b4e1b2cf521abcbc82fb1f52fd93c54862eaf"
+      "sha256": "c8abed692d1e835cc5f37c0c7ba6e72556f674e9b286dd63f990ff3ab4ff1eec"
     },
     {
-      "byteLength": 34406,
+      "byteLength": 34405,
       "reference": "tools/catalogResearchV2/package/runtime.ts",
-      "sha256": "dfbe306faf7ccfa98e3488fb0e8e809ce87fa3c8e8f106124c8056a00e0bbaac"
+      "sha256": "c50634f0f2c140378d2c3270af9f1a9908b3a9ffbe66a60da3a904f180ede190"
     },
     {
       "byteLength": 3088,

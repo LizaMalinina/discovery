@@ -48,7 +48,7 @@ import type {
 
 const verificationModuleReference = [
   '..',
-  'flowblind-hidden-flow-capability-verification-v1.mjs',
+  'flowblind-hidden-flow-capability-verification-v1.js',
 ].join('/')
 
 export {

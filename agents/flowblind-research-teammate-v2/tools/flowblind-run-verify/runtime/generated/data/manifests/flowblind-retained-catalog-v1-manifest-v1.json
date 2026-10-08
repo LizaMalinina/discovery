@@ -2,28 +2,28 @@
   "fileCount": 27,
   "files": [
     {
-      "byteLength": 6407,
-      "reference": "flowblind-prepare-study.mjs",
+      "byteLength": 6406,
+      "reference": "flowblind-prepare-study.js",
       "role": "retained-package-file",
-      "sha256": "fb7d6a79b1568af209eaf6b928b02a453a5eb5850ff5e2f74309e4dabb2217e3"
+      "sha256": "9c3d488f5a1af9d3999e3682a3edbf69690d231c3bd6b3c656e2c83c669f0dd1"
     },
     {
-      "byteLength": 1222,
-      "reference": "flowblind-report-resource.mjs",
+      "byteLength": 1221,
+      "reference": "flowblind-report-resource.js",
       "role": "retained-package-file",
-      "sha256": "3aaba1738986acde194f38fe66e262a12af9b47ee5c7539953aec80f1430f96b"
+      "sha256": "8a33c403fa9f73c5bb1e82578eee373722ed2e6fd34b59779148f00034e247b5"
     },
     {
-      "byteLength": 9258,
-      "reference": "flowblind-research-teammate-verification-v1.mjs",
+      "byteLength": 9256,
+      "reference": "flowblind-research-teammate-verification-v1.js",
       "role": "retained-package-file",
-      "sha256": "7642bc73c78713e38ff5e80e9033342dfc6913232c955b2685e3ec2549afbc20"
+      "sha256": "7694359b56d1a967a8aff2f0bca16f30ad0efa5915f993cc376d901d25c1e0e5"
     },
     {
-      "byteLength": 4090,
-      "reference": "flowblind-run-and-verify-study.mjs",
+      "byteLength": 4089,
+      "reference": "flowblind-run-and-verify-study.js",
       "role": "retained-package-file",
-      "sha256": "1cc30c5bea65e1a25c5732fef4f266df67de9abebe4fb1184fa424bf3550117d"
+      "sha256": "137ca1dab05d8f939338f1be0409ed35f6be5169445e642c765e2ec932a936db"
     },
     {
       "byteLength": 623,
@@ -32,10 +32,10 @@
       "sha256": "92bb1d59dc58bac39e307c43130fe8331c18467573f91cf715d40437c1353f0d"
     },
     {
-      "byteLength": 11101,
+      "byteLength": 11094,
       "reference": "generated/data/flowblind-catalog-package-lock-v1.json",
       "role": "retained-package-file",
-      "sha256": "3b8d60e74428678805ab0dabae8fbe9a4b5aa2bf3c433809c394e8413149f066"
+      "sha256": "5d3b637cb6ac83f6243b08db1dd687e9abe05b358e281da7a313d8d26c208ebb"
     },
     {
       "byteLength": 7294,
@@ -50,28 +50,28 @@
       "sha256": "5ca5acdc8205e4721794e7f27871e08c2d2f6a54b6dd9f59237cee5366d0415a"
     },
     {
-      "byteLength": 796,
+      "byteLength": 851,
       "reference": "generated/data/package/flowblind-prepare-study.Dockerfile",
       "role": "retained-package-file",
-      "sha256": "cb4fd46657085614d4d766b843aab945aae953f9c7285d2b63e217b819696bef"
+      "sha256": "53ba64d2eff52049c43436a36503de8deed84917212b43cc2c97b1973599a705"
     },
     {
-      "byteLength": 7691,
+      "byteLength": 7690,
       "reference": "generated/data/package/flowblind-prepare-study.tool.yaml",
       "role": "retained-package-file",
-      "sha256": "b6b4a22bb52beff9f9e470c0ebeb56974829f5cbfa325b1f548073d0eee60394"
+      "sha256": "db88488eadae77399184297ef55964eff6c72ac2e3e0042fea135ad72a94dbf5"
     },
     {
-      "byteLength": 821,
+      "byteLength": 876,
       "reference": "generated/data/package/flowblind-run-and-verify-study.Dockerfile",
       "role": "retained-package-file",
-      "sha256": "c78f971a66c46848f7ad3a1f0032f4053bd2061bb1240e630b7700de217c6e68"
+      "sha256": "1773582b3a3f718b13e4223387c037972226a7920e7679d5f3ce83955d7020b0"
     },
     {
-      "byteLength": 2308,
+      "byteLength": 2307,
       "reference": "generated/data/package/flowblind-run-and-verify-study.tool.yaml",
       "role": "retained-package-file",
-      "sha256": "987f10da142a449f4d2c7d58fda4d747d5f1907fd1a49bce02818abf2d993b22"
+      "sha256": "d786f052ce56a2b6ea3cd9ad0261e349bef2318d04f182d523886a9d53adbe42"
     },
     {
       "byteLength": 758,
@@ -158,10 +158,10 @@
       "sha256": "68df678926a290beccd25647c81fcb9185d2f32c5b3746c2b286954854773be4"
     },
     {
-      "byteLength": 348414,
-      "reference": "generated/flowblind-catalog-research-runtime-v1.mjs",
+      "byteLength": 348413,
+      "reference": "generated/flowblind-catalog-research-runtime-v1.js",
       "role": "retained-package-file",
-      "sha256": "6d781280bca8d4e79c2a5c79a32aa74210f6c1decc1388d8951018429e17e28c"
+      "sha256": "bd322f10f28092ebac9ef63fe144ba4426dd63c41e97b4d89b40d6152d00477a"
     }
   ],
   "id": "flowblind-retained-catalog-v1-manifest-v1",
@@ -169,32 +169,32 @@
     "artifactCount": 21,
     "internalFacadeCount": 3,
     "lock": {
-      "byteLength": 11101,
+      "byteLength": 11094,
       "reference": "generated/data/flowblind-catalog-package-lock-v1.json",
       "role": "retained-package-file",
-      "sha256": "3b8d60e74428678805ab0dabae8fbe9a4b5aa2bf3c433809c394e8413149f066"
+      "sha256": "5d3b637cb6ac83f6243b08db1dd687e9abe05b358e281da7a313d8d26c208ebb"
     },
     "runtime": {
-      "byteLength": 348414,
-      "reference": "generated/flowblind-catalog-research-runtime-v1.mjs",
+      "byteLength": 348413,
+      "reference": "generated/flowblind-catalog-research-runtime-v1.js",
       "role": "retained-package-file",
-      "sha256": "6d781280bca8d4e79c2a5c79a32aa74210f6c1decc1388d8951018429e17e28c"
+      "sha256": "bd322f10f28092ebac9ef63fe144ba4426dd63c41e97b4d89b40d6152d00477a"
     },
     "sourceModuleCount": 37,
     "verifier": {
-      "byteLength": 9258,
-      "reference": "flowblind-research-teammate-verification-v1.mjs",
+      "byteLength": 9256,
+      "reference": "flowblind-research-teammate-verification-v1.js",
       "role": "retained-package-file",
-      "sha256": "7642bc73c78713e38ff5e80e9033342dfc6913232c955b2685e3ec2549afbc20"
+      "sha256": "7694359b56d1a967a8aff2f0bca16f30ad0efa5915f993cc376d901d25c1e0e5"
     }
   },
   "provenance": {
-    "immutableCommit": "1303755b84dc0366cbf793e155ad0f8153549ce9"
+    "immutableCommit": "a0a2b09933b2a2d88542a459e5f24980739de46d"
   },
   "retainedId": "catalog-v1",
   "root": "generated/retained/catalog-v1/runtime",
   "schemaVersion": 1,
-  "sourceCommit": "1303755b84dc0366cbf793e155ad0f8153549ce9",
+  "sourceCommit": "a0a2b09933b2a2d88542a459e5f24980739de46d",
   "treeCanonicalization": "path-nul-byteLength-nul-sha256-lf-v1",
-  "treeSha256": "b7d84889d939857a6f44c443ea6bc49602cff732fdae735fcc08b9dedf2e8b61"
+  "treeSha256": "74c7c9c500d7f1d1c26550400ccf34ea32e0dd54ad72f0527031facc1a7b7b3b"
 }

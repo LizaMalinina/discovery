@@ -126,34 +126,34 @@
     },
     {
       "bundledPath": "data/package/flowblind-prepare-study.tool.yaml",
-      "byteLength": 7691,
+      "byteLength": 7690,
       "id": "prepare-tool-definition",
       "role": "catalog-tool-definition",
-      "sha256": "b6b4a22bb52beff9f9e470c0ebeb56974829f5cbfa325b1f548073d0eee60394",
+      "sha256": "db88488eadae77399184297ef55964eff6c72ac2e3e0042fea135ad72a94dbf5",
       "sourceReference": "discovery/agents/flowblind-research-teammate/tools/flowblind-prepare-study/tool.yaml"
     },
     {
       "bundledPath": "data/package/flowblind-prepare-study.Dockerfile",
-      "byteLength": 796,
+      "byteLength": 851,
       "id": "prepare-tool-dockerfile",
       "role": "catalog-tool-image-definition",
-      "sha256": "cb4fd46657085614d4d766b843aab945aae953f9c7285d2b63e217b819696bef",
+      "sha256": "53ba64d2eff52049c43436a36503de8deed84917212b43cc2c97b1973599a705",
       "sourceReference": "discovery/agents/flowblind-research-teammate/tools/flowblind-prepare-study/Dockerfile"
     },
     {
       "bundledPath": "data/package/flowblind-run-and-verify-study.tool.yaml",
-      "byteLength": 2308,
+      "byteLength": 2307,
       "id": "run-tool-definition",
       "role": "catalog-tool-definition",
-      "sha256": "987f10da142a449f4d2c7d58fda4d747d5f1907fd1a49bce02818abf2d993b22",
+      "sha256": "d786f052ce56a2b6ea3cd9ad0261e349bef2318d04f182d523886a9d53adbe42",
       "sourceReference": "discovery/agents/flowblind-research-teammate/tools/flowblind-run-and-verify-study/tool.yaml"
     },
     {
       "bundledPath": "data/package/flowblind-run-and-verify-study.Dockerfile",
-      "byteLength": 821,
+      "byteLength": 876,
       "id": "run-tool-dockerfile",
       "role": "catalog-tool-image-definition",
-      "sha256": "c78f971a66c46848f7ad3a1f0032f4053bd2061bb1240e630b7700de217c6e68",
+      "sha256": "1773582b3a3f718b13e4223387c037972226a7920e7679d5f3ce83955d7020b0",
       "sourceReference": "discovery/agents/flowblind-research-teammate/tools/flowblind-run-and-verify-study/Dockerfile"
     },
     {
@@ -179,36 +179,36 @@
   ],
   "facades": [
     {
-      "bundledPath": "flowblind-prepare-study.mjs",
-      "byteLength": 6407,
+      "bundledPath": "flowblind-prepare-study.js",
+      "byteLength": 6406,
       "id": "prepare-study-facade",
       "role": "public-executable-facade",
-      "sha256": "fb7d6a79b1568af209eaf6b928b02a453a5eb5850ff5e2f74309e4dabb2217e3",
-      "sourceReference": "tools/catalogResearch/launchers/flowblind-prepare-study.mjs"
+      "sha256": "9c3d488f5a1af9d3999e3682a3edbf69690d231c3bd6b3c656e2c83c669f0dd1",
+      "sourceReference": "tools/catalogResearch/launchers/flowblind-prepare-study.js"
     },
     {
-      "bundledPath": "flowblind-run-and-verify-study.mjs",
-      "byteLength": 4090,
+      "bundledPath": "flowblind-run-and-verify-study.js",
+      "byteLength": 4089,
       "id": "run-and-verify-study-facade",
       "role": "public-executable-facade",
-      "sha256": "1cc30c5bea65e1a25c5732fef4f266df67de9abebe4fb1184fa424bf3550117d",
-      "sourceReference": "tools/catalogResearch/launchers/flowblind-run-and-verify-study.mjs"
+      "sha256": "137ca1dab05d8f939338f1be0409ed35f6be5169445e642c765e2ec932a936db",
+      "sourceReference": "tools/catalogResearch/launchers/flowblind-run-and-verify-study.js"
     },
     {
-      "bundledPath": "flowblind-report-resource.mjs",
-      "byteLength": 1222,
+      "bundledPath": "flowblind-report-resource.js",
+      "byteLength": 1221,
       "id": "visual-report-resource-facade",
       "role": "content-addressed-resource-facade",
-      "sha256": "3aaba1738986acde194f38fe66e262a12af9b47ee5c7539953aec80f1430f96b",
-      "sourceReference": "tools/catalogResearch/launchers/flowblind-report-resource.mjs"
+      "sha256": "8a33c403fa9f73c5bb1e82578eee373722ed2e6fd34b59779148f00034e247b5",
+      "sourceReference": "tools/catalogResearch/launchers/flowblind-report-resource.js"
     }
   ],
   "id": "flowblind-catalog-package-lock-v1",
   "packageVersion": "1.0.0",
   "publicRuntime": {
-    "bundledPath": "generated/flowblind-catalog-research-runtime-v1.mjs",
-    "byteLength": 348414,
-    "sha256": "6d781280bca8d4e79c2a5c79a32aa74210f6c1decc1388d8951018429e17e28c"
+    "bundledPath": "generated/flowblind-catalog-research-runtime-v1.js",
+    "byteLength": 348413,
+    "sha256": "bd322f10f28092ebac9ef63fe144ba4426dd63c41e97b4d89b40d6152d00477a"
   },
   "runtimeNetworkRequired": false,
   "schemaVersion": 1,

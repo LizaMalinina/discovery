@@ -40,13 +40,13 @@
       "const": {
         "packageId": "flowblind-catalog-hidden-flow-package-lock-v1",
         "packageVersion": "1.0.0",
-        "compatibilityKey": "sha256:07cfa7f06e01cd2274dc10c6798795d47dd37ac3741bef070368eb7bf003833c"
+        "compatibilityKey": "sha256:5adde457ed53ece29eec6bfffedfc835807ac16f276a786bd5dc19c71290c0c4"
       }
     },
     "reviewedCommits": {
       "const": {
         "authorityRuntimeBase": "123bd990f48e7351884f035c0941367b8bd5f942",
-        "independentHardening": "8e67ffe4fd1ba74e6f8293eef85780738739167c"
+        "independentHardening": "8b0080d3aa006f3cc02bc0391b2cb581f017661f"
       }
     },
     "problemSnapshot": {

@@ -28,6 +28,7 @@ WORKDIR /app
 RUN addgroup --system --gid 10001 flowblind \
  && adduser --system --uid 10001 --ingroup flowblind --no-create-home flowblind \
  && mkdir -p /app/runtime /mnt/input /output \
+ && printf '{"type":"module"}\n' > /app/package.json \
  && chown flowblind:flowblind /output
 
 COPY --from=node-runtime /usr/local/bin/node /usr/local/bin/node
@@ -39,11 +40,11 @@ RUN python -m pip install \
       --index-url "${PIP_INDEX_URL}" \
       --require-hashes \
       --only-binary=:all: \
-      --requirement /app/runtime/generated/retained/hidden-flow-v1/runtime/generated/data/python/requirements.lock \
+      --requirement /app/runtime/generated/retained/hidden-flow-v1/runtime/generated/data/python/requirements.lock.txt \
  && chmod -R a-w /app/runtime \
  && chmod -R a+rX /app/runtime
 
 USER 10001:10001
 
 ENTRYPOINT []
-CMD ["node", "/app/runtime/flowblind-run-and-verify-study-v2.mjs"]
+CMD ["node", "/app/runtime/flowblind-run-and-verify-study-v2.js"]

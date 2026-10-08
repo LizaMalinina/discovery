@@ -447,9 +447,9 @@ direct QDLDL. Any mismatch is typed `runtime-identity-mismatch`.
 
 The package exposes:
 
-- `flowblind-hidden-flow-prepare.mjs`;
-- `flowblind-hidden-flow-run.mjs`; and
-- `flowblind-hidden-flow-declaration-preview.mjs`.
+- `flowblind-hidden-flow-prepare.js`;
+- `flowblind-hidden-flow-run.js`; and
+- `flowblind-hidden-flow-declaration-preview.js`.
 
 The first two check role labels as defense in depth; `FLOWBLIND_TOOL_ROLE` is
 not immutable image authority. Both verify the exact runtime tree and package

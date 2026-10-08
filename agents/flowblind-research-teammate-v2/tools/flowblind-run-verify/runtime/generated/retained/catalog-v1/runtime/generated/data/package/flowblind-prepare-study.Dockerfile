@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.version="1.0.0"
 RUN addgroup -S -g 10001 flowblind \
  && adduser -S -D -H -u 10001 -G flowblind flowblind \
  && mkdir -p /app/runtime /mnt/input /output \
+ && printf '{"type":"module"}\n' > /app/package.json \
  && chown flowblind:flowblind /output
 
 WORKDIR /app

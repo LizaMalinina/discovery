@@ -54,7 +54,7 @@ actions:
           description: Exact optional next-evidence intent used during preparation.
       required:
         - researchGoal
-    command: node /app/runtime/flowblind-run-and-verify-study.mjs
+    command: node /app/runtime/flowblind-run-and-verify-study.js
     environment_variables:
       - name: FLOWBLIND_RESEARCH_GOAL
         value: "{{researchGoal}}"
