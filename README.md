@@ -9,10 +9,11 @@
       <a href="https://aka.ms/discovery/download/current"><strong>x64</strong></a>
       <a href="https://aka.ms/discovery/download/arm64/current"><strong>Arm64</strong></a>
       <a href="https://aka.ms/discovery/download/osx/current"><strong>macOS</strong></a>
+      <a href="https://aka.ms/discovery/download/rhel/current"><strong>RHEL</strong></a>
     </td>
     <td valign="middle">
-      A self-contained desktop app - no SDK, no cloud setup. Current release: <strong>v0.15.15</strong>.<br>
-      <sub>Windows x64, Windows ARM64, and macOS installers are available today. Linux is not supported yet.</sub><br><br>
+      A self-contained desktop app - no SDK, no cloud setup. Current release: <strong>v0.15.18</strong>.<br>
+      <sub>Windows x64, Windows ARM64, macOS, and RHEL x64 (RPM) installers are available today.</sub><br><br>
       🛠️ <a href="docs/discovery-app/install.md">Install guide</a> - setup, verification, and upgrade steps.
     </td>
   </tr>
@@ -22,9 +23,9 @@
 
 | Version | Date | Platform | Installer |
 | --- | --- | --- | --- |
-| v0.15.14 _(previous)_ | 2026-09-08 | Windows x64 | [`Discovery-app-0.15.14-preview-win-x64.exe`](https://aka.ms/discovery/download/previous) |
-| v0.15.14 _(previous)_ | 2026-09-08 | Windows Arm64 | [`Discovery-app-0.15.14-preview-win-arm64.exe`](https://aka.ms/discovery/download/arm64/previous) |
-| v0.15.14 _(previous)_ | 2026-09-08 | macOS | [`Discovery-app-0.15.14-preview-osx-arm64.dmg`](https://aka.ms/discovery/download/osx/previous) |
+| v0.15.17 _(previous)_ | 2026-09-30 | Windows x64 | [`Discovery-app-0.15.17-preview-win-x64.exe`](https://aka.ms/discovery/download/previous) |
+| v0.15.17 _(previous)_ | 2026-09-30 | Windows Arm64 | [`Discovery-app-0.15.17-preview-win-arm64.exe`](https://aka.ms/discovery/download/arm64/previous) |
+| v0.15.17 _(previous)_ | 2026-09-30 | macOS | [`Discovery-app-0.15.17-preview-osx-arm64.dmg`](https://aka.ms/discovery/download/osx/previous) |
 
 ---
 
@@ -91,6 +92,12 @@ The Microsoft Discovery app is a **self-contained desktop application** — no S
 ## 🤝 Contributing
 
 All contributions — from Microsoft engineers and external partners — arrive via **pull request from a fork**. Direct pushes to `main` are not permitted.
+
+Public contributors may submit catalog content and documentation directly by
+pull request. Changes to trusted automation, repository configuration, schemas,
+generated output, and executable utilities are security-sensitive and require
+maintainer/CODEOWNER review; discuss substantial proposals through the matching
+Discussions category before opening a pull request.
 
 | Type | Goes to | First read |
 | --- | --- | --- |
