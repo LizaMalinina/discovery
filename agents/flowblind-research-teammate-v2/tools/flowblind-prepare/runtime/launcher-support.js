@@ -223,6 +223,9 @@ export function actionContext(_action, signal) {
     inputRoot:
       process.env.FLOWBLIND_INPUT_ROOT ??
       '/mnt/input',
+    preparationRoot:
+      process.env.FLOWBLIND_PREPARATION_ROOT ??
+      '/mnt/preparation',
     outputRoot:
       process.env.FLOWBLIND_OUTPUT_ROOT ??
       '/output',

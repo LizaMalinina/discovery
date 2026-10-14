@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { pathToFileURL } from "node:url";
-import { lstat, mkdir, mkdtemp, open, opendir, realpath, rename, rm, unlink, writeFile } from "node:fs/promises";
+import { lstat, mkdir, mkdtemp, open, opendir, readdir, realpath, rename, rm, unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { basename, dirname, isAbsolute, parse, relative, resolve, sep } from "node:path";
 import { constants } from "node:fs";
@@ -1498,6 +1498,20 @@ function normalizedText$1(value, required) {
 	})) return;
 	return normalized;
 }
+function scientistMetadataGuidance(descriptor, metadata) {
+	const record = metadata !== null && typeof metadata === "object" && !Array.isArray(metadata) ? metadata : {};
+	const missing = descriptor.requiredPropertyNames.filter((name) => {
+		const value = Object.hasOwn(record, name) ? record[name] : void 0;
+		return value === void 0 || value === null || typeof value === "string" && value.normalize("NFC").trim().length === 0;
+	});
+	const unexpected = Object.keys(record).some((name) => !descriptor.propertyNames.includes(name));
+	return [
+		"Provide only the scientist-level metadata named by the matched capability schema.",
+		...missing.length > 0 ? [`Missing required scientist metadata: ${missing.join(", ")}.`] : [],
+		...unexpected ? ["Remove scientist metadata that the matched method does not accept."] : [],
+		...missing.length === 0 && !unexpected ? ["Check that each declared value is allowed for the matched method."] : []
+	].join(" ");
+}
 function resultFree$2(outcome) {
 	return deepFreezeResult({
 		...outcome,
@@ -1921,7 +1935,7 @@ async function routeFlowBlindCapability(registry, request) {
 		containsResults: false,
 		capability: adapter.identity,
 		reasonCodes: ["matched-capability-scientist-metadata-invalid"],
-		guidance: "Provide only the scientist-level metadata named by the matched capability schema."
+		guidance: scientistMetadataGuidance(adapter.scientistMetadata.descriptor, parsed.request.metadata)
 	});
 	let preparedStudy;
 	let confirmedExecution;
@@ -2765,16 +2779,39 @@ function adapterForPreparation(preparation) {
 	if (preparation.recordType === "flowblind-catalog-vector-preparation-v1") return VECTOR_TIME_READINESS_V1_ADAPTER;
 	throw new Error("The selected preparation is not one of the two advertised retained methods.");
 }
-async function loadPublicV1AttachmentSelection(action, inputRoot, signal) {
+async function hasMountedEntries(root, signal) {
 	throwIfAborted(signal);
-	const files = await listOrdinaryFiles(inputRoot, {
-		maximumFiles: action === "prepare-study" ? 1 : 3,
-		maximumDepth: 4,
-		maximumBytesEach: 16777216
+	if (root === void 0) return false;
+	try {
+		const entries = await readdir(root);
+		throwIfAborted(signal);
+		return entries.length > 0;
+	} catch (error) {
+		throwIfAborted(signal);
+		if (typeof error === "object" && error !== null && "code" in error && error.code === "ENOENT") return false;
+		throw error;
+	}
+}
+var publicAttachmentLimits = Object.freeze({
+	maximumDepth: 4,
+	maximumBytesEach: 16777216
+});
+async function loadPublicV1AttachmentSelection(action, inputRoot, signal, preparationRoot) {
+	throwIfAborted(signal);
+	const separatePreparation = action === "run-and-verify-study" && await hasMountedEntries(preparationRoot, signal);
+	const inputFiles = await listOrdinaryFiles(inputRoot, {
+		...publicAttachmentLimits,
+		maximumFiles: action === "prepare-study" || separatePreparation ? 1 : 3
 	}, signal);
 	throwIfAborted(signal);
+	if (separatePreparation && (inputFiles.length !== 1 || inputFiles[0].reference !== "candidate.csv")) throw new Error("Run requires only candidate.csv in the input mount when the preparation is mounted separately.");
+	const files = separatePreparation ? [...inputFiles, ...await listOrdinaryFiles(preparationRoot, {
+		...publicAttachmentLimits,
+		maximumFiles: 2
+	}, signal)] : inputFiles;
+	throwIfAborted(signal);
 	const candidates = files.filter((file) => file.reference === "candidate.csv");
-	if (candidates.length !== 1 || files.length !== (action === "prepare-study" ? 1 : 3)) throw new Error(action === "prepare-study" ? "Preparation requires the mounted public source at the exact relative reference candidate.csv." : "Run requires candidate.csv plus one content-addressed preparation directory containing trusted-sidecar.json and preparation.json.");
+	if (candidates.length !== 1 || files.length !== (action === "prepare-study" ? 1 : 3)) throw new Error(action === "prepare-study" ? "Preparation requires the mounted public source at the exact relative reference candidate.csv." : "Run requires candidate.csv in the input mount and one content-addressed preparation directory containing trusted-sidecar.json and preparation.json, mounted at the preparation root or next to candidate.csv.");
 	const candidate = candidateHandle(candidates[0].bytes, signal);
 	if (action === "prepare-study") return Object.freeze({ attachments: Object.freeze([candidate]) });
 	const preparationFiles = files.filter((file) => basename(file.reference) === "preparation.json");
@@ -5685,12 +5722,15 @@ function snapshotActionContext(context) {
 	const inputRoot = ownDescriptorValue(descriptors, "inputRoot");
 	const outputRoot = ownDescriptorValue(descriptors, "outputRoot");
 	if (typeof inputRoot !== "string" || typeof outputRoot !== "string") throw new TypeError("FlowBlind v2 inputRoot and outputRoot must be own string data properties.");
+	const preparationRoot = ownDescriptorValue(descriptors, "preparationRoot");
+	if (preparationRoot !== void 0 && typeof preparationRoot !== "string") throw new TypeError("FlowBlind v2 preparationRoot must be an own string data property when present.");
 	const runConfirmationEvidence = ownDescriptorValue(descriptors, "runConfirmationEvidence");
 	const privateActivation = snapshotPrivateActivation(ownDescriptorValue(descriptors, "privateActivation"));
 	const signal = ownDescriptorValue(descriptors, "signal");
 	return Object.freeze({
 		inputRoot,
 		outputRoot,
+		...preparationRoot === void 0 ? {} : { preparationRoot },
 		...runConfirmationEvidence === void 0 ? {} : { runConfirmationEvidence },
 		...privateActivation === void 0 ? {} : { privateActivation },
 		...signal === void 0 ? {} : { signal }
@@ -5715,28 +5755,29 @@ var vectorStringMetadataFields = Object.freeze([
 	"timeUnit",
 	"samplingKind"
 ]);
-function hasInvalidVectorStringMetadata(scientist) {
+function invalidVectorStringMetadata(scientist) {
 	const candidate = asRecord(scientist);
-	if (candidate === null) return false;
+	if (candidate === null) return [];
 	let metadataValue;
 	try {
 		const descriptor = Object.getOwnPropertyDescriptor(candidate, "metadata");
 		metadataValue = descriptor !== void 0 && "value" in descriptor ? descriptor.value : void 0;
 	} catch {
-		return false;
+		return [];
 	}
 	const metadata = asRecord(metadataValue);
-	if (metadata === null) return false;
+	if (metadata === null) return [];
+	const invalid = [];
 	for (const key of vectorStringMetadataFields) {
 		let descriptor;
 		try {
 			descriptor = Object.getOwnPropertyDescriptor(metadata, key);
 		} catch {
-			return false;
+			return [];
 		}
-		if (descriptor !== void 0 && "value" in descriptor && descriptor.value !== void 0 && descriptor.value !== null && typeof descriptor.value !== "string") return true;
+		if (descriptor !== void 0 && "value" in descriptor && descriptor.value !== void 0 && descriptor.value !== null && typeof descriptor.value !== "string") invalid.push(key);
 	}
-	return false;
+	return invalid;
 }
 async function packageAuthority(candidate, signal) {
 	throwIfAborted(signal);
@@ -5930,7 +5971,7 @@ async function routePublic(input) {
 	let selection;
 	if (input.action === "run-and-verify-study") {
 		try {
-			selection = await loadPublicV1AttachmentSelection(input.action, input.context.inputRoot, input.context.signal);
+			selection = await loadPublicV1AttachmentSelection(input.action, input.context.inputRoot, input.context.signal, input.context.preparationRoot);
 		} catch (error) {
 			throwIfAborted(input.context.signal);
 			return resultFree({
@@ -6085,10 +6126,11 @@ async function callCatalogResearchV2Action(action, scientist, context, packageVe
 	const authority = await packageAuthority(packageVerificationSnapshot, contextSnapshot.signal);
 	throwIfAborted(contextSnapshot.signal);
 	if (authority === null) return packageRefusal();
-	if (hasInvalidVectorStringMetadata(scientistSnapshot)) return resultFree({
+	const invalidVectorText = invalidVectorStringMetadata(scientistSnapshot);
+	if (invalidVectorText.length > 0) return resultFree({
 		status: "scientist-metadata-invalid",
 		reasonCodes: ["vector-metadata-must-be-text"],
-		guidance: "Vector source, coordinate, value, time, and sampling metadata must be ordinary text when supplied."
+		guidance: `Vector source, coordinate, value, time, and sampling metadata must be ordinary text when supplied: ${invalidVectorText.join(", ")}.`
 	});
 	const probe = await probeRoute(action, scientistSnapshot, contextSnapshot.signal);
 	throwIfAborted(contextSnapshot.signal);

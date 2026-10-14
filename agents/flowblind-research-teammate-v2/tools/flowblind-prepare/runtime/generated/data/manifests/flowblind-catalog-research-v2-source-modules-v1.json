@@ -63,9 +63,9 @@
       "sha256": "4d5dfb92c89211f0c535e94ed9d09eef7affd47b1bd780f423c62a117a859352"
     },
     {
-      "byteLength": 48396,
+      "byteLength": 49987,
       "reference": "tools/catalogResearchV2/package/retainedCatalogV1.ts",
-      "sha256": "aa9461659ee0148d321710276c51dcff2c691b71d5bacb69e58ccc502abc4caf"
+      "sha256": "224ecc892df00f05d7ec669c6e8fdffbfb6eb66517fca78dcbdb67aaba4a62ef"
     },
     {
       "byteLength": 63276,
@@ -73,9 +73,9 @@
       "sha256": "c8abed692d1e835cc5f37c0c7ba6e72556f674e9b286dd63f990ff3ab4ff1eec"
     },
     {
-      "byteLength": 34405,
+      "byteLength": 35120,
       "reference": "tools/catalogResearchV2/package/runtime.ts",
-      "sha256": "c50634f0f2c140378d2c3270af9f1a9908b3a9ffbe66a60da3a904f180ede190"
+      "sha256": "81e245a5643bb149392da02aad564b17722abfda6bef90444e72f25aa29ba677"
     },
     {
       "byteLength": 3088,
@@ -83,9 +83,9 @@
       "sha256": "7ddd93625bfa16724b8a7f100602c402bd63d9fdf2e8b8b254241d02fa1d9fde"
     },
     {
-      "byteLength": 60544,
+      "byteLength": 62024,
       "reference": "tools/catalogResearchV2/router.ts",
-      "sha256": "25f6828ca86de57137fea94610043038282fc84902324d87a7bc3560fc2b8aba"
+      "sha256": "ad9711c6dc12b1166691030fb9bc94e6ea43233c1ece09b50a07d6a0df5089a5"
     }
   ],
   "packageVersion": "2.0.0",

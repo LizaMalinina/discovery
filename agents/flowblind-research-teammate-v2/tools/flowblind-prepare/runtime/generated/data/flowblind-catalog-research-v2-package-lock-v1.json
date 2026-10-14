@@ -136,7 +136,7 @@
       "byteLength": 3357,
       "reference": "generated/data/manifests/flowblind-catalog-research-v2-source-modules-v1.json",
       "role": "source-module-manifest",
-      "sha256": "206d35878739ac1e1366fbb4b76b7ff461abb368c835eba6b712927d60be6ea3"
+      "sha256": "a8cfae3a440ebd06ee6f71e49bca596830cdba6ebbf16518ab0533aecce3acd6"
     },
     {
       "byteLength": 1725,
@@ -163,16 +163,16 @@
       "sha256": "be8edcd6c36df8dee5cb702c5a4afd55e5de39b99df7d398baec6f3adeb5b018"
     },
     {
-      "byteLength": 12029,
+      "byteLength": 12087,
       "reference": "generated/data/package/README.md",
       "role": "package-readme",
-      "sha256": "85da1c63d136b468ee9cc80851a1b1abd16b858301d932ac79e17b0b248a0e63"
+      "sha256": "b146205c7b69f964e1ec44a761bdff74422e15c8940df28fe3aa97c05eed6ec9"
     },
     {
-      "byteLength": 3964,
+      "byteLength": 3937,
       "reference": "generated/data/package/agent.yaml",
       "role": "catalog-agent-definition",
-      "sha256": "dcb6274c53fadc61061e201a8cc073f152e2fe3cc4795bcd1058f142966b92f7"
+      "sha256": "14ae2793243602e17a703323cf34a60c9e78e85bab4b2efe0a5b098883baf8d3"
     },
     {
       "byteLength": 5982,
@@ -193,16 +193,16 @@
       "sha256": "7008190973a4ae4744901820bc9581c07616565f4a705203b763588724b9294f"
     },
     {
-      "byteLength": 1785,
+      "byteLength": 1852,
       "reference": "generated/data/package/flowblind-run-verify.Dockerfile",
       "role": "run-docker-context",
-      "sha256": "18313a79cc7778bd45913bab168e0ccb32c4e143e3954a996f810c17300692cb"
+      "sha256": "0d2884a0e5b10e6b68bdbb0700890d6ae50b6ce6c0df2bc3e7df3b4a426b8993"
     },
     {
-      "byteLength": 2629,
+      "byteLength": 2650,
       "reference": "generated/data/package/flowblind-run-verify.tool.yaml",
       "role": "run-tool-definition",
-      "sha256": "12298bef877ebcdfd78c29a77f48cf326022e1fecb854e6d825c34aa6e211bd9"
+      "sha256": "ce4fad3701ba7cd2a0db1f4f2281a5da0b97beec1e737b6ed5873681c5a1bd43"
     },
     {
       "byteLength": 681,
@@ -313,16 +313,16 @@
       "sha256": "f80fb7ce44eeac9164cee41602a9bb17b7819f32621869efa1eed1b89d1c4a18"
     },
     {
-      "byteLength": 298540,
+      "byteLength": 301065,
       "reference": "generated/flowblind-catalog-research-runtime-v2.js",
       "role": "outer-bundled-runtime",
-      "sha256": "6978446bbef7e703bd40579d7a93c86fae4c2a9ed5bebdcf18cf700cec147313"
+      "sha256": "a90555d6e21070095489e97296cf94e5f389700dfcbff44c0a19408d473ecf40"
     },
     {
-      "byteLength": 10868,
+      "byteLength": 10963,
       "reference": "launcher-support.js",
       "role": "internal-launcher-support",
-      "sha256": "c4c599753339c7e7aa4d8be60f75efbffb066766383b841f0a8fabd2847301d7"
+      "sha256": "fbcbaa61c241f892ff2e1c69a759360540d08a26a35bee7cd755823e10769218"
     }
   ],
   "id": "flowblind-catalog-research-v2-package-lock-v1",
@@ -355,10 +355,10 @@
     }
   ],
   "publicRuntime": {
-    "byteLength": 298540,
+    "byteLength": 301065,
     "reference": "generated/flowblind-catalog-research-runtime-v2.js",
     "role": "outer-bundled-runtime",
-    "sha256": "6978446bbef7e703bd40579d7a93c86fae4c2a9ed5bebdcf18cf700cec147313"
+    "sha256": "a90555d6e21070095489e97296cf94e5f389700dfcbff44c0a19408d473ecf40"
   },
   "releasePolicy": {
     "byteLength": 2169,
@@ -410,7 +410,7 @@
     "byteLength": 3357,
     "reference": "generated/data/manifests/flowblind-catalog-research-v2-source-modules-v1.json",
     "role": "source-module-manifest",
-    "sha256": "206d35878739ac1e1366fbb4b76b7ff461abb368c835eba6b712927d60be6ea3"
+    "sha256": "a8cfae3a440ebd06ee6f71e49bca596830cdba6ebbf16518ab0533aecce3acd6"
   },
   "unregisteredMethods": [
     "home-qc"

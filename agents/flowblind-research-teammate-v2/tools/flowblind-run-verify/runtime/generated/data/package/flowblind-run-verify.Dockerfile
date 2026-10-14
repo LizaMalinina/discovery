@@ -20,6 +20,7 @@ ENV NODE_ENV=production \
     VECLIB_MAXIMUM_THREADS=1 \
     BLIS_NUM_THREADS=1 \
     FLOWBLIND_INPUT_ROOT=/mnt/input \
+    FLOWBLIND_PREPARATION_ROOT=/mnt/preparation \
     FLOWBLIND_OUTPUT_ROOT=/output \
     FLOWBLIND_TOOL_ROLE=run-and-verify-study
 
@@ -27,7 +28,7 @@ WORKDIR /app
 
 RUN addgroup --system --gid 10001 flowblind \
  && adduser --system --uid 10001 --ingroup flowblind --no-create-home flowblind \
- && mkdir -p /app/runtime /mnt/input /output \
+ && mkdir -p /app/runtime /mnt/input /mnt/preparation /output \
  && printf '{"type":"module"}\n' > /app/package.json \
  && chown flowblind:flowblind /output
 

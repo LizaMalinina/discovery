@@ -1288,6 +1288,170 @@ test('Host attachment mounts require exact public candidate.csv and hidden probl
   }
 })
 
+test('Public run reads the preparation from a separate preparation mount', async () => {
+  const prepareInput = resolve(workRoot, 'separate-prepare-input')
+  const prepareOutput = resolve(workRoot, 'separate-prepare-output')
+  const runInput = resolve(workRoot, 'separate-run-input')
+  const runPreparation = resolve(workRoot, 'separate-run-preparation')
+  const runOutput = resolve(workRoot, 'separate-run-output')
+  const fallbackInput = resolve(workRoot, 'separate-fallback-input')
+  const emptyPreparation = resolve(workRoot, 'separate-empty-preparation')
+  const fallbackOutput = resolve(workRoot, 'separate-fallback-output')
+  try {
+    for (const directory of [
+      prepareInput,
+      prepareOutput,
+      runInput,
+      runPreparation,
+      runOutput,
+      fallbackInput,
+      emptyPreparation,
+      fallbackOutput,
+    ]) {
+      await emptyDirectory(directory)
+    }
+    await writeFile(
+      resolve(prepareInput, 'candidate.csv'),
+      regionalFixtureBytes(),
+    )
+    const prepareVerified =
+      await verifyFlowBlindCatalogResearchV2Package({
+        toolRole: 'prepare-study',
+      })
+    const prepared =
+      await callCatalogResearchV2Action(
+        'prepare-study',
+        regionalPrepare,
+        {
+          inputRoot: prepareInput,
+          outputRoot: prepareOutput,
+        },
+        prepareVerified.packageVerification,
+      )
+    assert.equal(
+      prepared.status,
+      'prepared-awaiting-confirmation',
+    )
+    const preparationDirectory =
+      `flowblind-preparation-${prepared.preparedStudy.preparationArtifact.sha256}`
+    await writeFile(
+      resolve(runInput, 'candidate.csv'),
+      regionalFixtureBytes(),
+    )
+    await cp(prepareOutput, runPreparation, {
+      recursive: true,
+    })
+
+    const runWith = async (context) => {
+      const verified =
+        await verifyFlowBlindCatalogResearchV2Package({
+          toolRole: 'run-and-verify-study',
+        })
+      return callCatalogResearchV2Action(
+        'run-and-verify-study',
+        regionalScientist,
+        {
+          ...context,
+          runConfirmationEvidence:
+            verified.runConfirmationEvidence,
+        },
+        verified.packageVerification,
+      )
+    }
+
+    await cp(
+      resolve(prepareOutput, preparationDirectory),
+      resolve(runInput, preparationDirectory),
+      { recursive: true },
+    )
+    const duplicated = await runWith({
+      inputRoot: runInput,
+      preparationRoot: runPreparation,
+      outputRoot: runOutput,
+    })
+    assert.equal(
+      duplicated.status,
+      'attachment-contract-invalid',
+    )
+    assert.deepEqual(
+      duplicated.reasonCodes,
+      ['host-attachment-selection-invalid'],
+    )
+    assert.deepEqual(await listFiles(runOutput), [])
+    await rm(resolve(runInput, preparationDirectory), {
+      recursive: true,
+      force: true,
+    })
+
+    const result = await runWith({
+      inputRoot: runInput,
+      preparationRoot: runPreparation,
+      outputRoot: runOutput,
+    })
+    assert.equal(result.status, 'report-complete')
+    assert.equal(
+      result.result.verifiedStudy
+        .artifactVerificationStatus,
+      'verified',
+    )
+
+    const replay = JSON.parse(
+      (
+        await runNodeProcess(
+          resolve(
+            packageRoot,
+            'runtime',
+            'flowblind-run-and-verify-study-v2.js',
+          ),
+          {
+            FLOWBLIND_TOOL_ROLE:
+              'run-and-verify-study',
+            FLOWBLIND_INPUT_ROOT: runInput,
+            FLOWBLIND_PREPARATION_ROOT:
+              runPreparation,
+            FLOWBLIND_OUTPUT_ROOT: runOutput,
+            FLOWBLIND_RESEARCH_GOAL:
+              regionalScientist.researchGoal,
+            FLOWBLIND_DECISION_QUESTION:
+              regionalScientist.decisionQuestion,
+            FLOWBLIND_NEXT_EVIDENCE_INTENT:
+              regionalScientist.nextEvidenceIntent,
+          },
+        )
+      ).toString('utf8'),
+    )
+    assert.equal(
+      serializeCatalogResearchV2Value(replay),
+      serializeCatalogResearchV2Value(result),
+    )
+
+    await writeFile(
+      resolve(fallbackInput, 'candidate.csv'),
+      regionalFixtureBytes(),
+    )
+    await cp(
+      resolve(prepareOutput, preparationDirectory),
+      resolve(fallbackInput, preparationDirectory),
+      { recursive: true },
+    )
+    const fallback = await runWith({
+      inputRoot: fallbackInput,
+      preparationRoot: emptyPreparation,
+      outputRoot: fallbackOutput,
+    })
+    assert.equal(fallback.status, 'report-complete')
+    assert.deepEqual(
+      fallback.result.verifiedStudy.result,
+      result.result.verifiedStudy.result,
+    )
+  } finally {
+    await rm(workRoot, {
+      recursive: true,
+      force: true,
+    })
+  }
+})
+
 test('Hidden prepare enforces the problem snapshot byte ceiling', async () => {
   const inputRoot = resolve(
     workRoot,
@@ -3650,6 +3814,130 @@ test('Invalid public prepare metadata performs zero host attachment reads', asyn
     )
     assert.equal(getterReads, 0)
     assert.equal(accessorReads.count(), 0)
+  } finally {
+    await rm(workRoot, {
+      recursive: true,
+      force: true,
+    })
+  }
+})
+
+test('Public prepare refusals name each missing required field', async () => {
+  const inputRoot = resolve(
+    workRoot,
+    'missing-field-input',
+  )
+  const outputRoot = resolve(
+    workRoot,
+    'missing-field-output',
+  )
+  const vectorMetadata = Object.freeze({
+    quantity: 'Two-dimensional validation velocity',
+    vectorMeaning:
+      'Deterministic v2 in-plane validation components u and v.',
+    vectorSourceKind: 'generated',
+    coordinateUnit: 'mm',
+    valueUnit: 'mm/s',
+    timeUnit: 's',
+    samplingKind: 'instantaneous',
+    provenance:
+      'Generated only in a temporary workspace by FX-VEC-7x6x13-v2.',
+    license: 'CC0-1.0 test fixture',
+  })
+  const families = [
+    {
+      researchGoal: regionalPrepare.researchGoal,
+      metadata: regionalPrepare.metadata,
+    },
+    {
+      researchGoal:
+        'Audit this vector time series for velocity readiness and derivative evidence.',
+      metadata: vectorMetadata,
+    },
+  ]
+  try {
+    await emptyDirectory(inputRoot)
+    await emptyDirectory(outputRoot)
+    const verified =
+      await verifyFlowBlindCatalogResearchV2Package({
+        toolRole: 'prepare-study',
+      })
+    for (const family of families) {
+      for (const field of Object.keys(family.metadata)) {
+        for (const replacement of [undefined, '  ']) {
+          const metadata = { ...family.metadata }
+          if (replacement === undefined) {
+            delete metadata[field]
+          } else {
+            metadata[field] = replacement
+          }
+          const result =
+            await callCatalogResearchV2Action(
+              'prepare-study',
+              {
+                researchGoal: family.researchGoal,
+                metadata,
+              },
+              { inputRoot, outputRoot },
+              verified.packageVerification,
+            )
+          assert.equal(
+            result.status,
+            'scientist-metadata-invalid',
+            field,
+          )
+          assert.equal(result.containsResults, false)
+          assert.match(
+            result.guidance,
+            new RegExp(
+              `Missing required scientist metadata: ${field}\\.`,
+              'u',
+            ),
+          )
+          assert.deepEqual(await listFiles(outputRoot), [])
+        }
+      }
+    }
+    const nonText =
+      await callCatalogResearchV2Action(
+        'prepare-study',
+        {
+          researchGoal: families[1].researchGoal,
+          metadata: { ...vectorMetadata, timeUnit: 5 },
+        },
+        { inputRoot, outputRoot },
+        verified.packageVerification,
+      )
+    assert.equal(
+      nonText.status,
+      'scientist-metadata-invalid',
+    )
+    assert.match(nonText.guidance, /: timeUnit\.$/u)
+    const unexpected =
+      await callCatalogResearchV2Action(
+        'prepare-study',
+        {
+          researchGoal: regionalPrepare.researchGoal,
+          metadata: {
+            ...regionalPrepare.metadata,
+            extraNote: 'x',
+          },
+        },
+        { inputRoot, outputRoot },
+        verified.packageVerification,
+      )
+    assert.equal(
+      unexpected.status,
+      'scientist-metadata-invalid',
+    )
+    assert.match(
+      unexpected.guidance,
+      /does not accept\.$/u,
+    )
+    assert.doesNotMatch(
+      unexpected.guidance,
+      /extraNote/u,
+    )
   } finally {
     await rm(workRoot, {
       recursive: true,

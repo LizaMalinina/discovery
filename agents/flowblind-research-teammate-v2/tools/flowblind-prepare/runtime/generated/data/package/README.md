@@ -34,14 +34,13 @@ catalog review before merge.
    content-addressed preparation folder to `/output`.
 4. Review the declaration preview. Preparation must stop without running the
    study in the same model turn.
-5. In a later explicit request, make `/mnt/input` hold exactly the original
-   `candidate.csv` and the unchanged promoted
-   `flowblind-preparation-<sha256>` folder: pass `inputMounts` with
-   `mountPath: /mnt/input` for both the parent folder of the file and the
-   promoted preparation output. That output already contains the
-   `flowblind-preparation-<sha256>` folder, so don't append its name to
-   `mountPath`. The agent calls `run-and-verify-study`, for which
-   confirmation is enabled.
+5. In a later explicit request, pass exactly two `inputMounts`:
+   `mountPath: /mnt/input` for the parent folder of the original
+   `candidate.csv`, and `mountPath: /mnt/preparation` for the promoted
+   preparation output, which already contains the unchanged
+   `flowblind-preparation-<sha256>` folder. Studio rejects two mounts at the
+   same path, so never mount both at `/mnt/input`. The agent calls
+   `run-and-verify-study`, for which confirmation is enabled.
 6. If the confirmation is approved, the tool revalidates the exact bindings,
    runs only the prepared method, verifies deterministic replay, and publishes
    marker-last JSON, Markdown, HTML, and receipt evidence. If confirmation is
@@ -105,6 +104,7 @@ prepare-study (confirmation Disabled)
 result-free content-addressed preparation in /output
             |
      later explicit request
+     /mnt/input/candidate.csv + preparation at /mnt/preparation
             |
             v
 run-and-verify-study (confirmation Enabled)
@@ -151,7 +151,7 @@ public Discovery actions. Private hidden-flow preparation reads only
 | Tool folder | Public action | Confirmation | Purpose |
 | --- | --- | --- | --- |
 | `flowblind-prepare` | `prepare-study` | Disabled | Selects one advertised method, validates the exact host-selected `/mnt/input/candidate.csv`, and publishes a deterministic result-free preparation asset. |
-| `flowblind-run-verify` | `run-and-verify-study` | Enabled | Revalidates the selected candidate and preparation under `/mnt/input`, runs only the routed method after host confirmation, verifies replay, and publishes marker-last evidence. |
+| `flowblind-run-verify` | `run-and-verify-study` | Enabled | Revalidates the selected candidate at `/mnt/input` and the preparation at `/mnt/preparation`, runs only the routed method after host confirmation, verifies replay, and publishes marker-last evidence. |
 
 There are no other public tools or actions. Each tool uses a single compute
 node named `worker`. The internal report-resource facade is not registered as
